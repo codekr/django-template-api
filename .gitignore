@@ -118,4 +118,5 @@ media/*
 !media/.gitkeep
 
 .serverless
+.DS_Store
 .idea
