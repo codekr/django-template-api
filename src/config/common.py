@@ -1,15 +1,19 @@
 import os
-import sentry_sdk
+import sys
 import environ  # noqa
+import sentry_sdk
 
-from datetime import timedelta
 from os.path import join
+from datetime import timedelta
 from sentry_sdk.integrations.django import DjangoIntegration
 
-env = environ.Env()
+TESTING = sys.argv[1:2] == ['test']
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+if not TESTING:
+    environ.Env.read_env(os.path.join(ROOT_DIR, '.env'))
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -17,8 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jet.dashboard',
-    'jet',
     'django.contrib.admin',
     'django_elasticsearch_dsl',
 
@@ -44,12 +46,10 @@ INSTALLED_APPS = (
     "multiselectfield",
 
     # Your apps
-    'src.product_catalog',
     "src.identities",
-    "src.vendors",
-    "src.brands",
+    'src.product_catalog',
 
-    # for generating the activity
+    # Activity
     'actstream'
 )
 
