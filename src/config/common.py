@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     # Your apps
     "src.identities",
     'src.product_catalog',
+    'src.user_management',
 
     # Activity
     'actstream'
