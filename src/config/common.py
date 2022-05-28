@@ -21,8 +21,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'jet.dashboard',
+    # 'jet',
     'django.contrib.admin',
     'django_elasticsearch_dsl',
+    'djmoney',
 
     # Third party apps
     'django_s3_storage',
@@ -49,6 +52,7 @@ INSTALLED_APPS = (
     "src.identities",
     'src.product_catalog',
     'src.user_management',
+    'src.system_management',
 
     # Activity
     'actstream'

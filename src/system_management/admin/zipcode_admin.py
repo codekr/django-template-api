@@ -1,0 +1,33 @@
+from django.contrib import admin
+from django.forms import TextInput, Textarea
+from django.db import models
+
+from djmoney.models.fields import MoneyField
+from src.system_management.models import ZipCode
+
+
+@admin.register(ZipCode)
+class ZipCodeAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '40'})},
+        models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100})},
+    }
+    fieldsets = (
+        (None, {
+            # 'classes': ('wide',),
+            'fields': (
+                ('zipcode', 'zipcode_type'),
+                'lat', 'long',
+                ('city', 'state'),
+                'country',
+                'is_decommisioned'
+            ),
+        }),
+    )
+
+    list_display = ('zipcode', 'lat', 'long', 'city', 'state', 'country', 'created_at', 'updated_at')
+    list_filter = ('city', 'state', 'updated_at')
+    search_fields = ('city', 'state', 'zipcode', 'country')
+    readonly_fields = ('country',)
+    ordering = ('updated_at',)

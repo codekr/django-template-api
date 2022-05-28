@@ -13,6 +13,8 @@ admin.site.site_url = os.getenv('DJANGO_SITE_URL', 'http://localhost:8000/admin'
 admin.site.index_title = "Welcome to Grocery Administrator Portal"
 
 urlpatterns = [
+                  # re_path(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
+                  # re_path(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
                   path('admin/', admin.site.urls),
                   path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
                   re_path(r'^ht/', include('health_check.urls')),
