@@ -36,6 +36,10 @@
             --close-button-hover-bg: #747474;
         }
     }
+    label.required::after {
+        content: "*";
+        color: red;
+    }
 </style>
 <link rel="icon" href="{{STATIC_URL}}/static/favicon.ico" sizes="48x48" />
 {% endblock %}

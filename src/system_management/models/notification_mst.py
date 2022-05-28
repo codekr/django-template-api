@@ -2,22 +2,40 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class NotificationTypeChoice(models.TextChoices):
-    Email = 'Email', _('Email'),
-    Push = 'Push', _('Push'),
-    Text = 'Text', _('Text'),
+class NotificationChannelChoice(models.TextChoices):
+    EMAIL = 'Email', _('EMAIL'),
+    PUSH = 'Push', _('PUSH'),
+    SMS = 'Sms', _('SMS'),
 
 
 class Notification(models.Model):
     notification_id = models.AutoField(primary_key=True)
-    notification_name = models.CharField(max_length=255, null=False, blank=False, db_index=True)
-    notification_type = models.CharField(
-        max_length=120, db_index=True, null=False, blank=False,
-        choices=NotificationTypeChoice.choices)
-    notification_description = models.TextField(null=False, blank=False)
-    notification_type_additional_text = models.TextField(null=False, blank=False)
-    is_allowed_to_disabled = models.BooleanField(default=False)
-
+    notification_name = models.CharField(
+        max_length=255, db_index=True,
+        verbose_name="Notification Name",
+        help_text="e.g Sales & Promotions or Personalized notifications"
+    )
+    notification_channel = models.CharField(
+        max_length=30, db_index=True,
+        choices=NotificationChannelChoice.choices,
+        verbose_name="Notification Channel",
+        help_text="e.g Email, Sms, Push"
+    )
+    notification_additional_text = models.CharField(
+        max_length=255,
+        verbose_name="Notification Channel Description",
+        help_text="e.g Email Notification, Push Notification, Text Notification"
+    )
+    notification_description = models.TextField(
+        max_length=255,
+        verbose_name="Notification Description",
+        help_text="e.g Our top picks among new arrivals, best-sellers and limited-time deals."
+    )
+    is_allowed_to_disabled = models.BooleanField(
+        default=False,
+        verbose_name="Is User Allowed To Disabled?",
+        help_text=""
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

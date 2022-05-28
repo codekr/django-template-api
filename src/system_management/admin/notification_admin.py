@@ -1,3 +1,4 @@
+from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -7,27 +8,27 @@ from src.system_management.models import Notification
 
 
 @admin.register(Notification)
-class NotificationAdmin(admin.ModelAdmin):
+class NotificationAdmin(ImportExportModelAdmin):
+    required_css_class = 'required'
     formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size': '40'})},
+        models.CharField: {'widget': TextInput(attrs={'size': '80'})},
         models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        (None, {
+        ("Mandatory Fields", {
             'fields': (
-                ('notification_name', 'notification_type',),
-                'notification_description',
-                'notification_type_additional_text',
+                'notification_name', 'notification_channel',
+                ('notification_description', 'notification_additional_text',),
                 'is_allowed_to_disabled',
             ),
         }),
     )
 
     list_display = (
-        'notification_id', 'notification_name', 'notification_type', 'is_allowed_to_disabled', 'created_at',
+        'notification_id', 'notification_name', 'notification_channel', 'is_allowed_to_disabled', 'created_at',
         'updated_at',
     )
-    list_filter = ('notification_type',)
-    search_fields = ('notification_id', 'notification_name', 'notification_type')
+    list_filter = ('notification_channel',)
+    search_fields = ('notification_id', 'notification_name', 'notification_channel')
     ordering = ('updated_at',)

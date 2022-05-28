@@ -1,3 +1,4 @@
+from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -7,11 +8,12 @@ from src.system_management.models import SystemConfig
 
 
 @admin.register(SystemConfig)
-class SystemConfigAdmin(admin.ModelAdmin):
+class SystemConfigAdmin(ImportExportModelAdmin):
+    save_on_top = True
     formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size': '40'})},
-        models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100})},
+        models.CharField: {'widget': TextInput(attrs={'size': '50'})},
+        models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '20', 'type': 'number'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
         ('Delivery Setting', {
@@ -51,14 +53,13 @@ class SystemConfigAdmin(admin.ModelAdmin):
         })
     )
 
-
-list_display = (
-    'system_config_id', 'delivery_fee', 'add_tip_post_delivery_days', 'return_window_time', 'units_sold_threshold',
-    'quantity_remaining_threshold', 'mark_new_tag_days', 'mark_best_seller_days', 'is_show_review',
-    # 'max_orders_for_review', 'minimum_reviews_count', 'points_expiry_days', 'points_dollar_conversion',
-    # 'referer_sharing_cutoff_days', 'referee_purchase_cutoff_days', 'order_share_code_expiry',
-    # 'referer_sharing_cutoff_days', 'referee_purchase_cutoff_days', 'order_share_code_expiry',
-    # 'is_show_out_of_stock', 'mobile_app_landing_screen_seq', 'checkout_disclaimers',
-    # 'max_wholesale_threshold_to_sell', 'fulfillment_remaining_spot_threshold'
-)
-ordering = ('updated_at',)
+    list_display = (
+        'system_config_id', 'delivery_fee', 'add_tip_post_delivery_days', 'return_window_time', 'units_sold_threshold',
+        'quantity_remaining_threshold', 'days_new_item', 'days_best_seller', 'is_show_review',
+        # 'max_orders_for_review', 'minimum_reviews_count', 'points_expiry_days', 'points_dollar_conversion',
+        # 'referer_sharing_cutoff_days', 'referee_purchase_cutoff_days', 'order_share_code_expiry',
+        # 'referer_sharing_cutoff_days', 'referee_purchase_cutoff_days', 'order_share_code_expiry',
+        # 'is_show_out_of_stock', 'mobile_app_landing_screen_seq', 'checkout_disclaimers',
+        # 'max_wholesale_threshold_to_sell', 'fulfillment_remaining_spot_threshold'
+    )
+    ordering = ('updated_at',)

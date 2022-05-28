@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django_elasticsearch_dsl',
     'djmoney',
+    'import_export',
 
     # Third party apps
     'django_s3_storage',

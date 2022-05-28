@@ -1,3 +1,4 @@
+from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -7,14 +8,14 @@ from src.system_management.models import Tax
 
 
 @admin.register(Tax)
-class TaxAdmin(admin.ModelAdmin):
+class TaxAdmin(ImportExportModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '40'})},
         models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        (None, {
+        ("Forms", {
             'fields': (
                 'zipcode',
                 ('state_rate', 'county_rate', 'special_rate',),
