@@ -1,10 +1,9 @@
-from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
-from django.forms import TextInput, Textarea
 from django.db import models
+from django.forms import TextInput, Textarea
+from import_export.admin import ImportExportModelAdmin
 
-from djmoney.models.fields import MoneyField
-from src.system_management.models import Notification
+from ..models import Notification
 
 
 @admin.register(Notification)

@@ -1,9 +1,27 @@
 from django.contrib import admin
-from src.product_catalog.models import Brand
+from django.db import models
+from django.forms import TextInput, Textarea
+from import_export.admin import ImportExportModelAdmin
+
+from ..models import Brand
+from ..resources import BrandResource
 
 
 @admin.register(Brand)
-class BrandAdmin(admin.ModelAdmin):
+class BrandAdmin(ImportExportModelAdmin):
+    resource_class = BrandResource
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '60'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
+    }
+    fieldsets = (
+        ("Brand Form", {
+            'fields': (
+                'brand_name',
+                ('is_exclusive', 'is_recognised_brand', 'is_approved')
+            ),
+        }),
+    )
     list_display = (
         'brand_id', 'brand_name',
         'is_exclusive', 'is_recognised_brand', 'is_approved',

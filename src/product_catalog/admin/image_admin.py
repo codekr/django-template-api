@@ -1,9 +1,25 @@
 from django.contrib import admin
-from src.product_catalog.models import Image
+from django.db import models
+from django.forms import TextInput, Textarea
+from import_export.admin import ImportExportModelAdmin
+
+from ..models import Image
 
 
 @admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
+class ImageAdmin(ImportExportModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '60'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
+    }
+    fieldsets = (
+        ("Image Form", {
+            'fields': (
+                'filename',
+                'alt_text'
+            ),
+        }),
+    )
     list_display = (
         'image_id', 'filename', 'alt_text',
         'storage_id', 'type', 'created_at', 'updated_at'
