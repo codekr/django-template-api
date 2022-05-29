@@ -6,6 +6,7 @@ class Item(models.Model):
     item_name = models.CharField(
         max_length=255,
         db_index=True,
+        unique=True,
         verbose_name="Item Name",
         help_text="Note: e.g 20 - 20 Nice"
     )

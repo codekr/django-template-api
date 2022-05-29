@@ -1,11 +1,12 @@
 from django.db import models
+
 from .image_mst import Image
 
 
 class Region(models.Model):
     region_id = models.AutoField(primary_key=True)
     name = models.CharField(
-        max_length=255, db_index=True,
+        max_length=255, db_index=True, unique=True,
         verbose_name="Name",
         help_text="Note: e.g Bengali, Gujarati, Kashmiri, Luchnowi, Maharashtrian."
     )

@@ -13,7 +13,7 @@ class ImageAdmin(ImportExportModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        ("Image Form", {
+        (None, {
             'fields': (
                 'filename',
                 'alt_text'

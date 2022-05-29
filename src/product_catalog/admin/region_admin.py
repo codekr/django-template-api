@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from django.forms import Textarea
+from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
 from ..models import Region
@@ -9,10 +9,11 @@ from ..models import Region
 @admin.register(Region)
 class RegionAdmin(ImportExportModelAdmin):
     formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '60'})},
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        ("Region Form", {
+        (None, {
             'fields': (
                 'name',
                 'description',

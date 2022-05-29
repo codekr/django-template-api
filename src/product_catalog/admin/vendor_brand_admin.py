@@ -3,11 +3,11 @@ from django.db import models
 from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
-from ..models import Item
+from ..models import VendorBrand
 
 
-@admin.register(Item)
-class ItemAdmin(ImportExportModelAdmin):
+@admin.register(VendorBrand)
+class VendorBrandAdmin(ImportExportModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
@@ -15,16 +15,17 @@ class ItemAdmin(ImportExportModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'item_name',
-                'item_alternate_name',
-                'is_approved'
+                'brand',
+                'vendor',
             ),
         }),
     )
     list_display = (
-        'item_id', 'item_name', 'item_alternate_name',
-        'is_approved', 'created_at', 'updated_at'
+        'vendor_brand_id', 'brand', 'vendor', 'created_at', 'updated_at'
     )
-    list_filter = ('created_at', 'updated_at')
-    search_fields = ('item_id', 'item_name', 'item_alternate_name',)
+    list_filter = ('updated_at',)
+    list_select_related = ('brand', 'vendor',)
+    autocomplete_fields = ('brand', 'vendor',)
+    search_fields = (
+        'vendor_brand_id', 'brand__brand_name', 'vendor__company_name')
     ordering = ('updated_at',)

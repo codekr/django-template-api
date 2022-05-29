@@ -1,8 +1,10 @@
 from import_export import resources
+
 from ..models import Brand
 
 
 class BrandResource(resources.ModelResource):
     class Meta:
         model = Brand
-        fields = ('zipcode', 'price',)
+        fields = ('brand_id', 'brand_name', 'image_id', 'is_recognised_brand', 'is_exclusive', 'is_approved')
+        import_id_fields = ('brand_id',)
