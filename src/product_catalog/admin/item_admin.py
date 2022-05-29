@@ -10,12 +10,14 @@ from ..resources import ItemResource
 @admin.register(Item)
 class ItemAdmin(ImportExportModelAdmin):
     resource_class = ItemResource
+    actions = ['mark_approved', 'mark_unapproved']
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
+        models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        (None, {
+        ("Item Form", {
             'fields': (
                 'item_name',
                 'item_alternate_name',
@@ -31,3 +33,13 @@ class ItemAdmin(ImportExportModelAdmin):
     search_fields = ('item_id', 'item_name', 'item_alternate_name',)
     ordering = ('-updated_at',)
     list_per_page = 120
+
+    def mark_approved(self, request, queryset):
+        queryset.update(is_approved=True)
+
+    mark_approved.short_description = 'Mark Item Approved'
+
+    def mark_unapproved(self, request, queryset):
+        queryset.update(is_approved=False)
+
+    mark_unapproved.short_description = 'Mark Item Unapproved'

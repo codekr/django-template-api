@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django_filters',  # for filtering rest endpoints
     'django_celery_beat',  # task scheduler
     "import_export_celery",
+    "colorfield",
 
     'health_check',  # required
     'health_check.db',  # stock Django health checkers

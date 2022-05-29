@@ -19,7 +19,7 @@ class Region(models.Model):
     display_order = models.PositiveSmallIntegerField(
         null=True, blank=True, db_index=True, default=1,
         verbose_name="Display Order",
-        help_text="Note: Define the display order of region in consumer phasing application."
+        help_text="Note: Define the display order of the region to consumer application."
     )
     is_approved = models.BooleanField(
         default=False, db_index=True,

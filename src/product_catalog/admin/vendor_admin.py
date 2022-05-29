@@ -17,6 +17,7 @@ class VendorAdmin(ImportExportModelAdmin):
     inlines = [VendorBrandInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
+        models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
