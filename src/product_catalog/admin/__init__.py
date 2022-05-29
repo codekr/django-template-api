@@ -6,4 +6,3 @@ from .item_admin import ItemAdmin
 from .region_admin import RegionAdmin
 from .sub_category_admin import SubCategoryAdmin
 from .vendor_admin import VendorAdmin
-from .vendor_brand_admin import VendorBrandAdmin

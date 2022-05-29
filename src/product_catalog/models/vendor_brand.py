@@ -21,7 +21,7 @@ class VendorBrand(models.Model):
 
     class Meta:
         db_table = 'vendor_brand_link'
-        verbose_name = 'Vendor Brand'
+        verbose_name = ''
         unique_together = ('vendor_brand_id', 'vendor', 'brand',)
 
     def __str__(self):

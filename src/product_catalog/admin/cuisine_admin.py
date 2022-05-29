@@ -24,8 +24,8 @@ class CuisineAdmin(ImportExportModelAdmin):
         }),
     )
     list_display = (
-        'cuisine_id', 'image', 'name', 'description',
-        'display_order', 'is_approved', 'created_at', 'updated_at'
+        'cuisine_id', 'display_order', 'image', 'name', 'description',
+        'is_approved', 'created_at', 'updated_at'
     )
     list_select_related = ('image',)
     list_display_links = ('cuisine_id', 'image',)

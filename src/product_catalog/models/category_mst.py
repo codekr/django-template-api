@@ -7,14 +7,15 @@ from .image_mst import Image
 class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
     name = models.CharField(
-        max_length=255, null=False, blank=False, db_index=True, verbose_name="Category Name",
+        max_length=255, null=False, blank=False, db_index=True,
+        verbose_name="Category Name",
         unique=True
     )
     description = models.TextField(
         max_length=300,
         null=True, blank=True,
-        verbose_name="Description",
-        help_text="Note: e.g describe the about the category."
+        verbose_name="Description (Optional)",
+        help_text=""
     )
     display_order = models.PositiveSmallIntegerField(
         null=True, blank=True, db_index=True, default=1,
@@ -23,15 +24,16 @@ class Category(models.Model):
     )
     background_hex_code = ColorField(
         default=False, db_index=True,
-        verbose_name="Background Color",
+        verbose_name="Background",
         help_text=""
     )
     is_approved = models.BooleanField(
         default=False, db_index=True,
-        verbose_name="Is Approved ?",
-        help_text="Note: Mark the category as approved."
+        verbose_name="Is Approved?",
+        help_text=""
     )
     image = models.OneToOneField(Image, null=True, blank=True, on_delete=models.CASCADE, db_index=True, )
+    sub_categories = models.ManyToManyField("SubCategory", through="CategorySubCategory", db_index=True, )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, )
     updated_at = models.DateTimeField(auto_now=True, db_index=True, )
 

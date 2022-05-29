@@ -27,6 +27,7 @@ class Cuisine(models.Model):
         help_text="Note: Mark the cuisine as approved."
     )
     image = models.OneToOneField(Image, null=True, blank=True, on_delete=models.CASCADE, db_index=True)
+    regions = models.ManyToManyField("Region", through="RegionCuisine", db_index=True, )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, )
     updated_at = models.DateTimeField(auto_now=True, db_index=True, )
 

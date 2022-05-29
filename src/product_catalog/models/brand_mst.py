@@ -11,17 +11,17 @@ class Brand(models.Model):
     )
     is_exclusive = models.BooleanField(
         default=False, db_index=True,
-        verbose_name="Is Exclusive ?",
+        verbose_name="Is Exclusive?",
         help_text="Note: Mark the brand as exclusive."
     )
     is_recognised_brand = models.BooleanField(
         default=False, db_index=True,
-        verbose_name="Is Recognised Brand ?",
+        verbose_name="Is Recognised Brand?",
         help_text="Note: Mark the brand as recognised."
     )
     is_approved = models.BooleanField(
         default=False, db_index=True,
-        verbose_name="Is Approved ?",
+        verbose_name="Is Approved?",
         help_text="Note: Mark the brand as approved."
     )
     image = models.OneToOneField(Image, null=True, blank=True, on_delete=models.CASCADE, db_index=True, )

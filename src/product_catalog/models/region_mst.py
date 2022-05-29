@@ -27,6 +27,7 @@ class Region(models.Model):
         help_text="Note: Mark the Region as approved."
     )
     image = models.OneToOneField(Image, null=True, blank=True, on_delete=models.CASCADE, db_index=True)
+    cuisines = models.ManyToManyField("Cuisine", through="RegionCuisine", db_index=True, )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, )
     updated_at = models.DateTimeField(auto_now=True, db_index=True, )
 

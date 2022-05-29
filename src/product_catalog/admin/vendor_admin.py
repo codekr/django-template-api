@@ -40,7 +40,7 @@ class VendorAdmin(ImportExportModelAdmin):
         }),
     )
     list_display = (
-        'vendor_id', 'company_name', 'qb_id',
+        'vendor_id', 'qb_id', 'company_name',
         'address', 'address2', 'city', 'zip_pin_code',
         'created_at', 'updated_at'
     )

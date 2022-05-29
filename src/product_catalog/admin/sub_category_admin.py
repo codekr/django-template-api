@@ -3,15 +3,22 @@ from django.db import models
 from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
-from ..models import SubCategory
+from ..models import SubCategory, CategorySubCategory
+
+
+class CategoriesInline(admin.TabularInline):
+    model = CategorySubCategory
+    autocomplete_fields = ['category']
+    verbose_name = "Categories"
 
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(ImportExportModelAdmin):
+    inlines = [CategoriesInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
         models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 3, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
         ("Sub Category Form", {
@@ -34,8 +41,8 @@ class SubCategoryAdmin(ImportExportModelAdmin):
         }),
     )
     list_display = (
-        'sub_category_id', 'image', 'name', 'description', 'background_hex_code',
-        'display_order', 'is_approved', 'is_tax_applicable',
+        'sub_category_id', 'display_order', 'image', 'name',
+        'background_hex_code', 'is_approved', 'is_tax_applicable',
         'effective_start_date', 'effective_end_date', 'created_at', 'updated_at'
     )
     list_select_related = ('image',)

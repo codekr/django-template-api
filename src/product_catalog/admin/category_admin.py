@@ -14,7 +14,7 @@ class CategoryAdmin(ImportExportModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        ("Category Form", {
+        ("Category", {
             'fields': (
                 'name',
                 'description',
@@ -25,8 +25,8 @@ class CategoryAdmin(ImportExportModelAdmin):
         }),
     )
     list_display = (
-        'category_id', 'image', 'name', 'description', 'background_hex_code',
-        'display_order', 'is_approved', 'created_at', 'updated_at'
+        'category_id', 'display_order', 'image', 'name', 'sub_category_count', 'background_hex_code', 'is_approved',
+        'created_at', 'updated_at'
     )
     list_select_related = ('image',)
     list_display_links = ('category_id', 'image',)
@@ -34,3 +34,10 @@ class CategoryAdmin(ImportExportModelAdmin):
     search_fields = ('category_id', 'name',)
     autocomplete_fields = ('image',)
     ordering = ('-updated_at',)
+
+    def get_queryset(self, request):
+        qs = super(CategoryAdmin, self).get_queryset(request)
+        return qs.prefetch_related('sub_categories')
+
+    def sub_category_count(self, obj):
+        return obj.sub_categories.all().count()
