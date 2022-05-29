@@ -26,4 +26,4 @@ class ImageAdmin(ImportExportModelAdmin):
     )
     list_filter = ('created_at', 'updated_at')
     search_fields = ('image_id', 'filename', 'alt_text',)
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

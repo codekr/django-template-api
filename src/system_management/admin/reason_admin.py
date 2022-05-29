@@ -25,4 +25,4 @@ class ReasonAdmin(ImportExportModelAdmin):
     )
     list_filter = ('reason_type',)
     search_fields = ('reason_id', 'reason_type', 'reason_label')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

@@ -45,4 +45,4 @@ class NotificationOperationAdmin(ImportExportModelAdmin):
     )
     list_filter = ('area', 'trigger_action', 'type')
     search_fields = ('notification_operation_id', 'area', 'trigger_action', 'type')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

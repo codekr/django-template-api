@@ -34,10 +34,11 @@ class BrandAdmin(ImportExportModelAdmin):
         }),
     )
     list_display = (
-        'brand_id', 'brand_name',
+        'brand_id', 'brand_name', 'image',
         'is_exclusive', 'is_recognised_brand', 'is_approved',
         'created_at', 'updated_at',
     )
+    list_display_links = ('image',)
     list_select_related = ('image',)
     list_filter = ('created_at', 'updated_at',)
     search_fields = ('brand_id', 'brand_name',)

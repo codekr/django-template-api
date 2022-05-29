@@ -29,4 +29,4 @@ class LegalTermAdmin(ImportExportModelAdmin):
     )
     list_filter = ('updated_at', 'effective_from')
     search_fields = ('legal_terms_id', 'term_type', 'effective_from', 'version')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

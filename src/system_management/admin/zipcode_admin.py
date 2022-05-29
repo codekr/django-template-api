@@ -31,5 +31,5 @@ class ZipcodeAdmin(ImportExportModelAdmin):
     list_filter = ('state', 'updated_at')
     search_fields = ('name', 'state', 'zipcode', 'country', 'county')
     readonly_fields = ('country',)
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)
     list_per_page = 150

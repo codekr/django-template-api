@@ -30,4 +30,4 @@ class NotificationAdmin(ImportExportModelAdmin):
     )
     list_filter = ('notification_channel',)
     search_fields = ('notification_id', 'notification_name', 'notification_channel')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

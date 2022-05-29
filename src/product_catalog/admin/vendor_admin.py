@@ -47,4 +47,4 @@ class VendorAdmin(ImportExportModelAdmin):
     readonly_fields = ('qb_id',)
     search_fields = (
         'vendor_id', 'company_name', 'address', 'address2', 'city', 'zip_pin_code',)
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

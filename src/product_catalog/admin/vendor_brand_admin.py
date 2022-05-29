@@ -23,9 +23,10 @@ class VendorBrandAdmin(ImportExportModelAdmin):
     list_display = (
         'vendor_brand_id', 'brand', 'vendor', 'created_at', 'updated_at'
     )
+    list_display_links = ('brand', 'vendor',)
     list_filter = ('updated_at',)
     list_select_related = ('brand', 'vendor',)
     autocomplete_fields = ('brand', 'vendor',)
     search_fields = (
         'vendor_brand_id', 'brand__brand_name', 'vendor__company_name')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

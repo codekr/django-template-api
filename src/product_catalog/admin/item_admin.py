@@ -4,10 +4,12 @@ from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
 from ..models import Item
+from ..resources import ItemResource
 
 
 @admin.register(Item)
 class ItemAdmin(ImportExportModelAdmin):
+    resource_class = ItemResource
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
         models.TextField: {'widget': Textarea(attrs={'rows': 2, 'cols': 100, 'style': 'resize:none;'})},
@@ -27,4 +29,5 @@ class ItemAdmin(ImportExportModelAdmin):
     )
     list_filter = ('created_at', 'updated_at')
     search_fields = ('item_id', 'item_name', 'item_alternate_name',)
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)
+    list_per_page = 120

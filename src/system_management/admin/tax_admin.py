@@ -39,9 +39,10 @@ class TaxAdmin(ImportExportModelAdmin):
         'tax_rate_id', 'zipcode', 'state_rate', 'special_rate', 'city_rate', 'county_rate', 'combined_district_rate',
         'is_freight_taxable', 'created_at',
     )
+    list_display_links = ('zipcode',)
     list_select_related = ('zipcode',)
     list_filter = ('updated_at', 'is_freight_taxable',)
     autocomplete_fields = ('zipcode',)
     search_fields = ('tax_rate_id', 'state_rate', 'county_rate', 'city_rate', 'combined_district_rate', 'special_rate')
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)
     list_per_page = 150

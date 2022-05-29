@@ -61,4 +61,4 @@ class SystemConfigAdmin(ImportExportModelAdmin):
         # 'is_show_out_of_stock', 'mobile_app_landing_screen_seq', 'checkout_disclaimers',
         # 'max_wholesale_threshold_to_sell', 'fulfillment_remaining_spot_threshold'
     )
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)

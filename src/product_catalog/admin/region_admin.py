@@ -30,4 +30,4 @@ class RegionAdmin(ImportExportModelAdmin):
     list_filter = ('created_at', 'updated_at', 'name')
     search_fields = ('brand_id', 'name',)
     autocomplete_fields = ('image',)
-    ordering = ('updated_at',)
+    ordering = ('-updated_at',)
