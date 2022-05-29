@@ -1,4 +1,5 @@
 from django.db import models
+
 from .zipcode_mst import Zipcode
 
 
@@ -10,22 +11,27 @@ class Tax(models.Model):
         help_text=""
     )
     state_rate = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, decimal_places=6, db_index=True, default=0,
         verbose_name='State Tax Rate',
         help_text=""
     )
     county_rate = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, decimal_places=6, db_index=True, default=0,
         verbose_name='County Tax Rate',
         help_text=""
     )
+    city_rate = models.DecimalField(
+        max_digits=9, decimal_places=6, db_index=True, default=0,
+        verbose_name='City Tax Rate',
+        help_text=""
+    )
     special_rate = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, decimal_places=6, db_index=True, default=0,
         verbose_name='Special Rate',
         help_text=""
     )
     combined_district_rate = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, decimal_places=6, db_index=True, default=0,
         verbose_name='Combined District Tax Rate',
         help_text=""
     )
@@ -35,7 +41,7 @@ class Tax(models.Model):
         help_text=""
     )
     status = models.CharField(
-        max_length=40,
+        max_length=40, null=True, blank=True,
         verbose_name='Status',
         help_text=""
     )

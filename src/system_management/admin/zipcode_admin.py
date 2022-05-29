@@ -17,19 +17,19 @@ class ZipcodeAdmin(ImportExportModelAdmin):
     }
     fieldsets = (
         ("Forms", {
-            # 'classes': ('wide',),
             'fields': (
-                ('zipcode', 'zipcode_type'),
+                ('zipcode', 'type'),
                 'lat', 'long',
-                ('city', 'state'),
+                ('name', 'state', 'county'),
                 'country',
                 'is_decommisioned'
             ),
         }),
     )
 
-    list_display = ('zipcode', 'lat', 'long', 'city', 'state', 'country', 'created_at', 'updated_at')
-    list_filter = ('city', 'state', 'updated_at')
-    search_fields = ('city', 'state', 'zipcode', 'country')
+    list_display = ('zipcode', 'name', 'state', 'county', 'lat', 'long', 'country', 'created_at', 'updated_at')
+    list_filter = ('state', 'updated_at')
+    search_fields = ('name', 'state', 'zipcode', 'country', 'county')
     readonly_fields = ('country',)
     ordering = ('updated_at',)
+    list_per_page = 150

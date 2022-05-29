@@ -5,9 +5,9 @@ class Zipcode(models.Model):
     zipcode = models.PositiveIntegerField(
         primary_key=True, verbose_name='Zipcode', db_index=True
     )
-    city = models.CharField(
+    name = models.CharField(
         max_length=120, db_index=True,
-        verbose_name='City',
+        verbose_name='Zipcode Name',
         help_text=""
     )
     state = models.CharField(
@@ -15,25 +15,30 @@ class Zipcode(models.Model):
         verbose_name='State',
         help_text=""
     )
+    county = models.CharField(
+        max_length=120, null=True, blank=True, db_index=True,
+        verbose_name='County',
+        help_text=""
+    )
     lat = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, null=True, blank=True, decimal_places=6, db_index=True,
         verbose_name='Latitude',
         help_text=""
     )
     long = models.DecimalField(
-        max_digits=9, decimal_places=6, db_index=True,
+        max_digits=9, null=True, blank=True, decimal_places=6, db_index=True,
         verbose_name='Longitude',
+        help_text=""
+    )
+    type = models.CharField(
+        max_length=30,
+        verbose_name='Zipcode Type',
         help_text=""
     )
     country = models.CharField(
         max_length=120, db_index=True,
         default='USA',
         verbose_name='Country',
-        help_text=""
-    )
-    zipcode_type = models.CharField(
-        max_length=30,
-        verbose_name='Zipcode Type',
         help_text=""
     )
     is_decommisioned = models.BooleanField(
@@ -50,4 +55,4 @@ class Zipcode(models.Model):
         verbose_name = 'Zipcode'
 
     def __str__(self):
-        return f"{self.zipcode} {self.city, self.state}"
+        return f"{self.zipcode} "

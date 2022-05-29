@@ -7,4 +7,5 @@ class ZipcodeResource(resources.ModelResource):
     class Meta:
         model = Zipcode
         fields = (
-            'zipcode', 'city', 'state', 'lat', 'long', 'country', 'zipcode_type', 'is_decommisioned',)
+            'zipcode', 'name', 'state', 'county', 'lat', 'long', 'country', 'type', 'is_decommisioned')
+        import_id_fields = ('zipcode',)
