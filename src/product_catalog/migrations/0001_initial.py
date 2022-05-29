@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,7 +15,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('image_id', models.AutoField(primary_key=True, serialize=False)),
                 ('filename', models.CharField(db_index=True, max_length=255, verbose_name='Filename')),
-                ('storage_id', models.CharField(blank=True, db_index=True, max_length=255, null=True, verbose_name='Storage Bucket Key')),
+                ('storage_id', models.CharField(blank=True, db_index=True, max_length=255, null=True,
+                                                verbose_name='Storage Bucket Key')),
                 ('alt_text', models.CharField(blank=True, max_length=255, null=True, verbose_name='Alternate Text')),
                 ('type', models.CharField(blank=True, max_length=20, null=True, verbose_name='Type')),
                 ('size', models.CharField(blank=True, max_length=20, null=True, verbose_name='Size')),

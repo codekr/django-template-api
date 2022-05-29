@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('system_management', '0010_auto_20220529_1223'),
     ]
@@ -13,27 +12,32 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='tax',
             name='city_rate',
-            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9, verbose_name='City Tax Rate'),
+            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9,
+                                      verbose_name='City Tax Rate'),
         ),
         migrations.AlterField(
             model_name='tax',
             name='combined_district_rate',
-            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9, verbose_name='Combined District Tax Rate'),
+            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9,
+                                      verbose_name='Combined District Tax Rate'),
         ),
         migrations.AlterField(
             model_name='tax',
             name='county_rate',
-            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9, verbose_name='County Tax Rate'),
+            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9,
+                                      verbose_name='County Tax Rate'),
         ),
         migrations.AlterField(
             model_name='tax',
             name='special_rate',
-            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9, verbose_name='Special Rate'),
+            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9,
+                                      verbose_name='Special Rate'),
         ),
         migrations.AlterField(
             model_name='tax',
             name='state_rate',
-            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9, verbose_name='State Tax Rate'),
+            field=models.DecimalField(db_index=True, decimal_places=6, default=0, max_digits=9,
+                                      verbose_name='State Tax Rate'),
         ),
         migrations.AlterField(
             model_name='tax',

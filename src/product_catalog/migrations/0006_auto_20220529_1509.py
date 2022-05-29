@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('product_catalog', '0005_region'),
     ]
@@ -18,27 +17,33 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='brand',
             name='is_approved',
-            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as approved.', verbose_name='Is Approved ?'),
+            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as approved.',
+                                      verbose_name='Is Approved ?'),
         ),
         migrations.AlterField(
             model_name='brand',
             name='is_exclusive',
-            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as exclusive.', verbose_name='Is Exclusive ?'),
+            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as exclusive.',
+                                      verbose_name='Is Exclusive ?'),
         ),
         migrations.AlterField(
             model_name='brand',
             name='is_recognised_brand',
-            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as recognised.', verbose_name='Is Recognised Brand ?'),
+            field=models.BooleanField(db_index=True, default=False, help_text='Note: Mark the brand as recognised.',
+                                      verbose_name='Is Recognised Brand ?'),
         ),
         migrations.AlterField(
             model_name='item',
             name='item_name',
-            field=models.CharField(db_index=True, help_text='Note: e.g 20 - 20 Nice', max_length=255, unique=True, verbose_name='Item Name'),
+            field=models.CharField(db_index=True, help_text='Note: e.g 20 - 20 Nice', max_length=255, unique=True,
+                                   verbose_name='Item Name'),
         ),
         migrations.AlterField(
             model_name='region',
             name='name',
-            field=models.CharField(db_index=True, help_text='Note: e.g Bengali, Gujarati, Kashmiri, Luchnowi, Maharashtrian.', max_length=255, unique=True, verbose_name='Name'),
+            field=models.CharField(db_index=True,
+                                   help_text='Note: e.g Bengali, Gujarati, Kashmiri, Luchnowi, Maharashtrian.',
+                                   max_length=255, unique=True, verbose_name='Name'),
         ),
         migrations.AlterField(
             model_name='vendor',
@@ -48,6 +53,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='vendor',
             name='qb_id',
-            field=models.CharField(blank=True, db_index=True, help_text='Note: Quickbook vendor linking ID.', max_length=30, null=True, verbose_name='Quickbook ID'),
+            field=models.CharField(blank=True, db_index=True, help_text='Note: Quickbook vendor linking ID.',
+                                   max_length=30, null=True, verbose_name='Quickbook ID'),
         ),
     ]

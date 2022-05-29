@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('product_catalog', '0001_initial'),
     ]
@@ -14,7 +13,8 @@ class Migration(migrations.Migration):
             name='Vendor',
             fields=[
                 ('vendor_id', models.AutoField(primary_key=True, serialize=False)),
-                ('qb_id', models.CharField(blank=True, db_index=True, max_length=30, null=True, verbose_name='QuickBook ID')),
+                ('qb_id',
+                 models.CharField(blank=True, db_index=True, max_length=30, null=True, verbose_name='QuickBook ID')),
                 ('company_name', models.CharField(db_index=True, max_length=255, verbose_name='Company Name')),
                 ('address', models.CharField(max_length=255, verbose_name='Street')),
                 ('address2', models.CharField(blank=True, max_length=255, null=True, verbose_name='Address')),

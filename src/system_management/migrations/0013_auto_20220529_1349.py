@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('system_management', '0012_legalterm'),
     ]
@@ -23,7 +22,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='legalterm',
             name='term_type',
-            field=models.CharField(choices=[('Terms_Of_Service', 'Terms of service'), ('Privacy', 'Privacy'), ('Membership', 'Membership'), ('Payment_Terms', 'Payment terms')], db_index=True, max_length=30, verbose_name='Terms Type'),
+            field=models.CharField(
+                choices=[('Terms_Of_Service', 'Terms of service'), ('Privacy', 'Privacy'), ('Membership', 'Membership'),
+                         ('Payment_Terms', 'Payment terms')], db_index=True, max_length=30, verbose_name='Terms Type'),
         ),
         migrations.AlterField(
             model_name='legalterm',

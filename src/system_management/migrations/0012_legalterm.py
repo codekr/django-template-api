@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('system_management', '0011_auto_20220529_1232'),
     ]
@@ -14,9 +13,13 @@ class Migration(migrations.Migration):
             name='LegalTerm',
             fields=[
                 ('legal_terms_id', models.AutoField(primary_key=True, serialize=False)),
-                ('term_type', models.CharField(choices=[('Terms_Of_Service', 'Terms of service'), ('Privacy', 'Privacy'), ('Membership', 'Membership'), ('Payment_Terms', 'Payment terms')], db_index=True, max_length=30, verbose_name='Legal Terms Type')),
+                ('term_type', models.CharField(
+                    choices=[('Terms_Of_Service', 'Terms of service'), ('Privacy', 'Privacy'),
+                             ('Membership', 'Membership'), ('Payment_Terms', 'Payment terms')], db_index=True,
+                    max_length=30, verbose_name='Legal Terms Type')),
                 ('legal_file_name', models.CharField(max_length=255, verbose_name='Legal Terms Filename')),
-                ('effective_from', models.DateField(help_text='Note: Legal terms will be effective onward', verbose_name='Legal Terms Effective From')),
+                ('effective_from', models.DateField(help_text='Note: Legal terms will be effective onward',
+                                                    verbose_name='Legal Terms Effective From')),
                 ('version', models.CharField(max_length=20, verbose_name='Legal Term Version')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),

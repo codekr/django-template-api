@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('system_management', '0001_initial'),
     ]
@@ -13,7 +12,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Zipcode',
             fields=[
-                ('zipcode', models.PositiveIntegerField(db_index=True, primary_key=True, serialize=False, verbose_name='Zipcode')),
+                ('zipcode',
+                 models.PositiveIntegerField(db_index=True, primary_key=True, serialize=False, verbose_name='Zipcode')),
                 ('city', models.CharField(db_index=True, max_length=120, verbose_name='City')),
                 ('state', models.CharField(db_index=True, max_length=120, verbose_name='State')),
                 ('lat', models.DecimalField(db_index=True, decimal_places=6, max_digits=9, verbose_name='Latitude')),

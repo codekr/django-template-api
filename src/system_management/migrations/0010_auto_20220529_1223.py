@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('system_management', '0009_zipcode_county'),
     ]
@@ -18,11 +17,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='zipcode',
             name='lat',
-            field=models.DecimalField(blank=True, db_index=True, decimal_places=6, max_digits=9, null=True, verbose_name='Latitude'),
+            field=models.DecimalField(blank=True, db_index=True, decimal_places=6, max_digits=9, null=True,
+                                      verbose_name='Latitude'),
         ),
         migrations.AlterField(
             model_name='zipcode',
             name='long',
-            field=models.DecimalField(blank=True, db_index=True, decimal_places=6, max_digits=9, null=True, verbose_name='Longitude'),
+            field=models.DecimalField(blank=True, db_index=True, decimal_places=6, max_digits=9, null=True,
+                                      verbose_name='Longitude'),
         ),
     ]
