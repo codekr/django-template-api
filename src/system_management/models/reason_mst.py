@@ -12,13 +12,13 @@ class Reason(models.Model):
     reason_label = models.TextField(
         max_length=255, null=False, blank=False, db_index=True,
         verbose_name="Reason Label",
-        help_text="e.g Ordering experience, Technology related"
+        help_text="Note: e.g Ordering experience, Technology related"
     )
     reason_type = models.CharField(
         max_length=120, db_index=True, null=False, blank=False,
         choices=ReasonTypeChoice.choices,
         verbose_name="Reason Type",
-        help_text="e.g Delivery/Pickup, Product"
+        help_text="Note: e.g Delivery/Pickup, Product"
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

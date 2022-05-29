@@ -1,4 +1,5 @@
 from django.db import models
+from django_quill.fields import QuillField
 from django.utils.translation import gettext_lazy as _
 
 
@@ -25,13 +26,13 @@ class NotificationOperation(models.Model):
         max_length=120,
         choices=NotificationOperationAreaChoice.choices,
         db_index=True,
-        verbose_name="Area",
-        help_text=""
+        verbose_name="Notification Area",
+        help_text="Note: E.g. Order, Refund, Product"
     )
     trigger_action = models.CharField(
         max_length=255,
         choices=NotificationOperationTriggerActionChoice.choices,
-        verbose_name="Trigger On",
+        verbose_name="Notification Trigger On",
         db_index=True,
         help_text=""
     )
@@ -46,12 +47,12 @@ class NotificationOperation(models.Model):
         max_length=255,
         null=True, blank=True,
         verbose_name="SMS Message Content",
-        help_text=""
+        help_text="Note: Text message content either templating or plain text"
     )
-    email_content = models.TextField(
+    email_content = QuillField(
         null=True, blank=True,
         verbose_name="Email Message Content",
-        help_text=""
+        help_text="Note: Email message content either templating or plain text"
     )
     frequency = models.PositiveSmallIntegerField(
         null=True, blank=True,
@@ -71,14 +72,14 @@ class NotificationOperation(models.Model):
         null=True,
         blank=True,
         verbose_name="Recipient's Email Addresses",
-        help_text="Comma separated email address, e.g dinesh@radiansys.com, dheeraj@radiansys.com"
+        help_text="Note: Comma separated email address, e.g dinesh@radiansys.com, dheeraj@radiansys.com"
     )
     sms_recipient = models.TextField(
         max_length=1000,
         null=True,
         blank=True,
         verbose_name="Recipient's Phone Numbers",
-        help_text="Comma separated phone number including country code, e.g +1543678909, +9187676545656"
+        help_text="Note: Comma separated phone number including country code, e.g +1543678909, +9187676545656"
     )
     is_active = models.BooleanField(default=True)
 

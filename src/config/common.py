@@ -25,8 +25,7 @@ INSTALLED_APPS = (
     # 'jet',
     'django.contrib.admin',
     'django_elasticsearch_dsl',
-    'djmoney',
-    'import_export',
+
 
     # Third party apps
     'django_s3_storage',
@@ -48,6 +47,10 @@ INSTALLED_APPS = (
     'health_check.contrib.s3boto3_storage',  # requires boto3 and S3BotoStorage backend
     'health_check.contrib.redis',  # requires Redis broker
     "multiselectfield",
+    'djmoney',
+    'import_export',
+    'django_quill',
+
 
     # Your apps
     "src.identities",
@@ -56,7 +59,7 @@ INSTALLED_APPS = (
     'src.system_management',
 
     # Activity
-    'actstream'
+    'actstream',
 )
 
 # https://docs.djangoproject.com/en/2.0/topics/http/middleware/

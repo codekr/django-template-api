@@ -15,12 +15,25 @@ class NotificationOperationAdmin(ImportExportModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        ("Forms", {
+        ("Notification Area", {
             'fields': (
-                ('area', 'trigger_action', 'type',),
-                'frequency', 'time',
-                ('sms_content', 'email_content',),
-                ('email_recipient', 'sms_recipient',),
+                'area',
+            ),
+        }),
+        ("Periodic Information", {
+            'fields': (
+                'trigger_action', 'type',
+                'frequency', 'time'
+            ),
+        }),
+        ("Message Content Information", {
+            'fields': (
+                'sms_content', 'email_content',
+            ),
+        }),
+        ("Recipients Information", {
+            'fields': (
+                'email_recipient', 'sms_recipient',
                 'is_active'
             ),
         }),

@@ -15,13 +15,21 @@ class TaxAdmin(ImportExportModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 100, 'style': 'resize:none;'})},
     }
     fieldsets = (
-        ("Forms", {
+        ("Zipcode Information", {
             'fields': (
                 'zipcode',
+            ),
+        }),
+        ("Tax", {
+            'fields': (
                 ('state_rate', 'county_rate', 'special_rate',),
                 'combined_district_rate',
-                'is_freight_taxable',
+            ),
+        }),
+        ("Other Information", {
+            'fields': (
                 'status',
+                'is_freight_taxable'
             ),
         }),
     )

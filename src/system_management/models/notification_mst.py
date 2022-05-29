@@ -13,23 +13,23 @@ class Notification(models.Model):
     notification_name = models.CharField(
         max_length=255, db_index=True,
         verbose_name="Notification Name",
-        help_text="e.g Sales & Promotions or Personalized notifications"
+        help_text="Note: e.g Sales & Promotions or Personalized notifications"
     )
     notification_channel = models.CharField(
         max_length=30, db_index=True,
         choices=NotificationChannelChoice.choices,
         verbose_name="Notification Channel",
-        help_text="e.g Email, Sms, Push"
+        help_text="Note: e.g Email, Sms, Push"
     )
     notification_additional_text = models.CharField(
         max_length=255,
         verbose_name="Notification Channel Description",
-        help_text="e.g Email Notification, Push Notification, Text Notification"
+        help_text="Note: e.g Email Notification, Push Notification, Text Notification"
     )
     notification_description = models.TextField(
         max_length=255,
         verbose_name="Notification Description",
-        help_text="e.g Our top picks among new arrivals, best-sellers and limited-time deals."
+        help_text="Note: e.g Our top picks among new arrivals, best-sellers and limited-time deals."
     )
     is_allowed_to_disabled = models.BooleanField(
         default=False,

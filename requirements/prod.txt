@@ -7,8 +7,7 @@ newrelic==6.4.0.157
 django-environ==0.8.1
 celery==5.2.6
 django-3-jet==1.0.8
-django-money==2.1.1
-django-import-export==2.8.0
+
 
 # For the persistence stores
 psycopg2-binary==2.9.3
@@ -29,6 +28,9 @@ djangorestframework==3.12.4
 djangorestframework-simplejwt==4.7.1
 django-activity-stream==0.10.0
 django-elasticsearch-dsl==7.2.2
+django-money==2.1.1
+django-import-export==2.8.0
+django-quill-editor==0.1.40
 
 # Swagger dependecny
 drf-spectacular==0.22.1
