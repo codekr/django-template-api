@@ -1,10 +1,10 @@
 import os
 import sys
+from datetime import timedelta
+from os.path import join
+
 import environ  # noqa
 import sentry_sdk
-
-from os.path import join
-from datetime import timedelta
 from sentry_sdk.integrations.django import DjangoIntegration
 
 TESTING = sys.argv[1:2] == ['test']
@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     "drf_spectacular_sidecar",  # swagger side bar configuration
     'django_filters',  # for filtering rest endpoints
     'django_celery_beat',  # task scheduler
+    "import_export_celery",
 
     'health_check',  # required
     'health_check.db',  # stock Django health checkers
@@ -71,6 +72,7 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'author.middlewares.AuthorDefaultBackendMiddleware'
 )
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '#p7&kxb7y^yq8ahfw5%$xh=f8=&1y*5+a5($8w_f7kw!-qig(j')

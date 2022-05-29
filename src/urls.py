@@ -1,17 +1,16 @@
 import os
 
 from django.conf import settings
-from django.contrib import admin
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
-
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 # Django Admin typo configuration
-admin.site.site_title = "Demo Inc"
-admin.site.site_header = "Demo Administrator"
-admin.site.index_title = "Welcome to Demo Administrator"
+admin.site.site_title = "Grocery Inc"
+admin.site.site_header = "Grocery Administrator"
+admin.site.index_title = "Welcome to Grocery Administrator"
 admin.site.site_url = os.getenv('DJANGO_SITE_URL', 'http://localhost:8000/admin')
 
 urlpatterns = [
