@@ -9,7 +9,7 @@ class Vendor(models.Model):
         help_text="Note: Quickbook vendor linking ID."
     )
     company_name = models.CharField(
-        max_length=255, db_index=True, unique=True,
+        max_length=255, db_index=True, null=True, blank=True,
         verbose_name="Name",
         help_text=""
     )
@@ -48,4 +48,4 @@ class Vendor(models.Model):
         verbose_name = 'Vendor'
 
     def __str__(self):
-        return f"{self.company_name}"
+        return f"{self.company_name} ({self.vendor_id})"

@@ -4,10 +4,12 @@ from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
 from ..models import Category
+from ..resources import CategoryResource
 
 
 @admin.register(Category)
 class CategoryAdmin(ImportExportModelAdmin):
+    resource_class = CategoryResource
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
         models.PositiveIntegerField: {'widget': TextInput(attrs={'size': '25'})},

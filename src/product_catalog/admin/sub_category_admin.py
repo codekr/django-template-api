@@ -4,6 +4,7 @@ from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
 from ..models import SubCategory, CategorySubCategory
+from ..resources import SubCategoryResource
 
 
 class CategoriesInline(admin.TabularInline):
@@ -14,6 +15,7 @@ class CategoriesInline(admin.TabularInline):
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(ImportExportModelAdmin):
+    resource_class = SubCategoryResource
     inlines = [CategoriesInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},

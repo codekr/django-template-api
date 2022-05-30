@@ -1,0 +1,14 @@
+category_id,name,description,display_order,icon_id,background_hex_code,is_approved
+1,Beverages,,9,,,YES
+2,"Biscuit, Cookies & Rusks",,6,,,YES
+3,Breakfast & Dairy,,2,,,YES
+4,"Eggs, Meats & Fish",,7,,,YES
+5,Freshly Prepared,,4,,,YES
+6,Frozen,,8,,,YES
+7,Fruits & Vegetables,,1,,,YES
+8,Grocery & Staples,,3,,,YES
+9,Household Items,,13,,,YES
+10,Personal Care,,11,,,YES
+11,Kitchen & Dining,,12,,,YES
+12,"Noodles, Sauces & Instant Food",,10,,,YES
+13,"Snacks, Sweets & Chips",,5,,,YES

@@ -4,6 +4,7 @@ from django.forms import Textarea, TextInput
 from import_export.admin import ImportExportModelAdmin
 
 from ..models import Vendor, VendorBrand
+from ..resources import VendorResource
 
 
 class VendorBrandInline(admin.TabularInline):
@@ -14,6 +15,7 @@ class VendorBrandInline(admin.TabularInline):
 
 @admin.register(Vendor)
 class VendorAdmin(ImportExportModelAdmin):
+    resource_class = VendorResource
     inlines = [VendorBrandInline]
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '60'})},
@@ -49,3 +51,4 @@ class VendorAdmin(ImportExportModelAdmin):
     search_fields = (
         'vendor_id', 'company_name', 'address', 'address2', 'city', 'zip_pin_code',)
     ordering = ('-updated_at',)
+    list_per_page = 150
