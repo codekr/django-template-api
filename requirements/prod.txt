@@ -12,7 +12,7 @@ django-3-jet==1.0.8
 # For the persistence stores
 psycopg2-binary==2.9.3
 sendgrid==6.9.7
-redis==4.3.1
+redis==4.5.3
 elasticsearch==7.17.3
 elasticsearch-dsl==7.4.0
 
